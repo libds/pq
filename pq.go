@@ -86,9 +86,12 @@ func (p *MaxPQ) Peek() *Item {
 // update modifies the priority and value of an Item in the queue.
 func (pq *MaxPQ) Update(item *Item, value interface{}, priority int) {
 	item.Value = value
-	item.Priority = priority
-	heap.Fix(pq.pq, item.Index)
+	if priority != item.Priority {
+		item.Priority = priority
+		heap.Fix(pq.pq, item.Index)
+	}
 }
+
 func (p *MaxPQ) Pop() *Item {
 	item := heap.Pop(p.pq).(*Item)
 	return item
