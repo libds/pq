@@ -8,7 +8,7 @@ package main
 
 import (
     "fmt"
-    "github.com/libd/pq"
+    "github.com/libds/pq"
 )
 
 func main() {
